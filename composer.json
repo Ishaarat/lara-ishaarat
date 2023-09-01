@@ -2,7 +2,7 @@
     "name": "ishaarat/lara-ishaarat",
     "description": "Send Whatsapp notifications from your laravel application using Ishaarat",
     "type": "library",
-    "license": "GPL3.0",
+    "license": "GPL-3.0-or-later",
     "keywords": [
         "ishaarat",
         "whatsapp",
