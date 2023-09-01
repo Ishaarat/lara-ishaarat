@@ -2,8 +2,8 @@
 /**
  * InvalidMessageException
  *
- * @copyright Copyright © 2023 Ushop Unilever. All rights reserved.
- * @author    ahmed.allam@unilever.com
+ * @copyright Copyright © 2023 Ishaarat. All rights reserved.
+ * @author    Ishaarat Tech Team <sales@ishaarat.com>
  */
 
 namespace Ishaarat\LaraIshaarat\Exceptions;
