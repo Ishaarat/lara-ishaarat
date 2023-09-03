@@ -36,10 +36,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Ishaarat\\LaraIshaarat\\IshaaratServiceProvider"
+                "Ishaarat\\LaraIshaarat\\Providers\\IshaaratServiceProvider"
             ],
             "aliases": {
-                "Ishaarat": "Ishaarat\\LaraIshaarat\\Facades\\Ishaarat"
+                "Ishaarat": "Ishaarat\\LaraIshaarat\\Facades\\WA"
             }
         }
     }

@@ -15,14 +15,29 @@ Via Composer
 $ composer require ishaarat/lara-ishaarat
 ```
 
+If you are using Laravel 5.5 and higher, the service provider will be automatically registered.
+
+For older versions, you have to add the service provider and alias to your `config/app.php`:
+
+```php
+'providers' => [
+    ...
+    Ishaarat\LaraIshaarat\Providers\IshaaratServiceProvider::class,
+]
+
+'alias' => [
+    ...
+    'Ishaarat' => Ishaarat\LaraIshaarat\Facades\WA::class,
+]
+```
+
 ## :zap: Configure
 
 Publish the config file
 
-```bash
-$ php artisan ishaarat:publish
 ```
-
+php artisan vendor:publish --provider="Ishaarat\LaraIshaarat\Providers\IshaaratServiceProvider"
+```
 
 Then fill your auth key and app key you got from your [Ishaarat Account](https://ishaarat.com).
 
