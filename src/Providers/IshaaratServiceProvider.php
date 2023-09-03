@@ -41,7 +41,7 @@ class IshaaratServiceProvider extends ServiceProvider
      * @param string $path
      * @return string
      */
-    private function config_path(string $path = '')
+    private function config_path($path)
     {
         return function_exists('config_path') ? config_path($path) : app()->basePath() . DIRECTORY_SEPARATOR . 'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
