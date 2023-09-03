@@ -12,4 +12,5 @@ use Exception;
 
 class InvalidMessageException extends Exception
 {
+    protected $message = 'An error occurred';
 }

@@ -13,6 +13,6 @@ class WA extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'ishaarat-wa';
+        return 'ishaarat.wa';
     }
 }
