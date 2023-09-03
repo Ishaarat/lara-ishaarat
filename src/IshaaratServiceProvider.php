@@ -11,7 +11,7 @@ namespace Ishaarat\LaraIshaarat;
 use Illuminate\Support\ServiceProvider;
 use Ishaarat\LaraIshaarat\Commands\IshaaratPublishCommand;
 
-class IshaaratServiceProvider
+class IshaaratServiceProvider extends ServiceProvider
 {
     public function boot()
     {
