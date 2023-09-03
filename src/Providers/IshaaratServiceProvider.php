@@ -17,7 +17,7 @@ class IshaaratServiceProvider extends ServiceProvider
     {
         if (method_exists($this, 'publishes')) {
             $this->publishes([
-                __DIR__.'/../config/ishaarat-wa.php' => $this->config_path('ishaarat-wa.php'),
+                __DIR__.'/../../config/ishaarat-wa.php' => $this->config_path('ishaarat-wa.php'),
             ]);
         }
     }
