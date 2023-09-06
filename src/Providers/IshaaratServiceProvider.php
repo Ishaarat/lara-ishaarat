@@ -10,6 +10,8 @@
 namespace Ishaarat\LaraIshaarat\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Ishaarat\LaraIshaarat\Drivers\WA;
+
 
 class IshaaratServiceProvider extends ServiceProvider
 {
@@ -24,7 +26,12 @@ class IshaaratServiceProvider extends ServiceProvider
 
     public function register()
     {
-        //
+        $this->mergeConfigFrom(__DIR__.'/../../config/ishaarat-wa.php', 'ishaarat-wa');
+
+        // WA Facede.
+        $this->app->singleton('ishaarat', function () {
+            return new WA();
+        });
     }
 
     /**
@@ -41,7 +48,7 @@ class IshaaratServiceProvider extends ServiceProvider
      * @param string $path
      * @return string
      */
-    private function config_path($path)
+    private function config_path(string $path = '')
     {
         return function_exists('config_path') ? config_path($path) : app()->basePath() . DIRECTORY_SEPARATOR . 'config' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }

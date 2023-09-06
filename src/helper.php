@@ -3,10 +3,10 @@ if (! function_exists('ishaaratWA')) {
     /**
      * Access SmsManager through helper.
      *
-     * @return \Ishaarat\LaraIshaarat\WA
+     * @return \Ishaarat\LaraIshaarat\Ishaarat
      */
     function ishaaratWA()
     {
-        return app('ishaarat-wa');
+        return app('ishaarat');
     }
 }

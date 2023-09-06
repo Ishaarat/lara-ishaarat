@@ -8,10 +8,10 @@
 
 namespace Ishaarat\LaraIshaarat;
 
-
 use Ishaarat\LaraIshaarat\Contracts\Driver;
-
-class WA
+use Ishaarat\LaraIshaarat\Drivers\WA;
+use Illuminate\Http\Request;
+class Ishaarat
 {
     protected array $config;
 
@@ -25,8 +25,13 @@ class WA
     {
         $this->config = $config;
         $this->setBuilder(new Builder());
-        $this->via(\Ishaarat\LaraIshaarat\Drivers\WA::class);
+        $this->via(WA::class);
     }
+
+    /**
+     * @param $driver
+     * @return $this
+     */
     public function via($driver): self
     {
         $this->driver = $driver;
@@ -35,6 +40,10 @@ class WA
         return $this;
     }
 
+    /**
+     * @param $recipients
+     * @return $this
+     */
     public function to($recipients): self
     {
         $this->builder->to($recipients);
@@ -42,6 +51,12 @@ class WA
         return $this;
     }
 
+    /**
+     * @param $message
+     * @param $callback
+     * @return $this|mixed
+     * @throws Exceptions\InvalidMessageException
+     */
     public function send($message, $callback = null)
     {
         if ($message instanceof Builder) {
@@ -59,6 +74,10 @@ class WA
         return $driver->send();
     }
 
+    /**
+     * @return mixed
+     * @throws Exceptions\InvalidMessageException
+     */
     public function dispatch()
     {
         $this->driver = $this->builder->getDriver() ?: $this->driver;
@@ -72,15 +91,23 @@ class WA
         return $driver->send();
     }
 
+    /**
+     * @param Builder $builder
+     * @return $this
+     */
     protected function setBuilder(Builder $builder): self
     {
         $this->builder = $builder;
 
         return $this;
     }
+
+    /**
+     * @return Driver
+     */
     protected function getDriverInstance(): Driver
     {
-        return new \Ishaarat\LaraIshaarat\Drivers\WA($this->settings);
+        return new WA($this->settings);
     }
 
 }
