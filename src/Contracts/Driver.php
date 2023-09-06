@@ -21,7 +21,7 @@ abstract class Driver
 
     protected ?string $sender = '';
 
-    public function __construct(array $settings)
+    public function __construct(array $settings = [])
     {
         $this->settings = $settings;
         $this->boot();

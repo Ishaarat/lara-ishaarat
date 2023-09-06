@@ -5,8 +5,12 @@
  * @copyright Copyright © 2023 Ishaarat. All rights reserved.
  * @author    Ishaarat Tech Team <sales@ishaarat.com>
  */
+namespace Ishaarat\LaraIshaarat\Channels;
+
 use Exception;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Log;
+
 class WAChannel
 {
     public function send($notifiable, Notification $notification)
@@ -17,11 +21,15 @@ class WAChannel
         $message = $notification->toWhatsapp($notifiable);
 
         $this->validate($message);
-        $waSender = app()->make('ishaarat-wa');
+        $waSender = app()->make('ishaarat');
 
-        return $waSender->send($message->getBody(), function ($waMessage) use ($message) {
+        $res = $waSender->send($message->getBody(), function ($waMessage) use ($message) {
             $waMessage->to($message->getRecipients());
         });
+
+        Log::info($res);
+
+        return $res;
     }
 
     private function validate($message)
